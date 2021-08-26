@@ -1,0 +1,108 @@
+<HTML>
+<HEAD>
+<TITLE>COMPANY BRANCH</TITLE>
+<SCRIPT SRC=""https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></SCRIPT>
+<style>
+div{
+border:1px solid black;
+width:400px;
+}
+</style>
+</HEAD>
+<BODY>
+<!--company name-->
+<div ng-app="main" ng-controller="company" >
+<h4>COMPANY DETAILS</h4>
+<table border="0">
+<tr>
+<td>COMPANY NAME</td> 
+<td><input type="text" ng-model="company.name"></td>
+</tr>
+<tr>
+<td> NATURE OF BUSINESS</td>
+<td><input type="text" ng-model="company.nature"></td>
+</tr>
+<tr>
+<td><button>SAVE</button></tr>
+</tr>
+</div>
+<!-- companydetails-->
+<div ng-app="demo" ng-controller="company1">
+<table border="0">
+<tr>
+<td>Company Name</td>
+<td><select ng-model="selectedname" ng-options="names" width="100px">
+</select>
+</tr>
+<tr>
+<td>Branch Name</td>
+<td><input type="text" ng-model="company1.branch">
+</td>
+</tr>
+<tr>
+<td>GST no.</td>
+<td><input type="text" ng-model="company1.gst"></td>
+</tr>
+<tr>
+<td>Address</td>
+<td><input type="text" ng-model="company1.address"></td>
+</td>
+</tr>
+<tr>
+<button>Search</button>
+</tr>
+</table>
+</div>
+<!-- branch details-->
+<div  ng-app="same" ng-controller="company2">
+<h4>Company name</h4>
+<table boder="1">
+<tr>
+<th>BRANCH NAME</th>
+<th>GST No</th>
+<th>Address</th>
+</tr>
+<tr ng-repeat="company1.branches">
+<td>{{branches.branch}}</td>
+<td>{{branches.gst}}</td>
+<td>{{branches.address}}</td>
+</tr>
+</table>
+</div>
+<script>
+var main=angular.module("main",[]);
+main.controller('companycontroller',function($scope){
+$scope.company={
+name:"xyz",
+nature:"technology",
+};
+});
+</script>
+<script>
+var app=angular.modules('demo',[]);
+app.controller('company1',function($scope){
+$scope.company1={
+$scope.names=['company.name'],
+$scope.branch="chennai",
+$scope.gst="3%",
+$scope.address="no:4,gandhi nager,anna nager,chennai=32",
+};
+});
+</script>
+<script>
+var mainapp=angular.modules("same",[]);
+mainapp.controller('company2',function($scope){
+$scope.company2={
+branches:[
+{branch:''company1.branch',gst:'company1.gst',address:'company1.address'},
+],
+full:function(){
+var object;
+object=$scope.company2;
+return object.branch+" "+object.gst+" "+object.address;
+}
+};
+});
+</script>
+</BODY>
+</HTML>
